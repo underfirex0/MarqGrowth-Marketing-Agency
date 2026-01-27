@@ -7,84 +7,105 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-dark-900 pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
-      {/* Decorative massive text background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none select-none opacity-[0.03]">
-        <span className="text-[20vw] font-display font-bold text-white leading-none">VORTEX</span>
+    <footer className="relative bg-dark-900 pt-24 pb-12 border-t border-white/5 overflow-hidden">
+      <div className="pointer-events-none absolute top-0 left-1/2 w-full -translate-x-1/2 text-center opacity-[0.03] select-none">
+        <span className="font-display text-[20vw] font-bold leading-none text-white">
+          VORTEX
+        </span>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        
-        {/* Main CTA */}
-        <div className="flex flex-col items-center justify-center text-center mb-24">
-           <h2 className="font-display font-bold text-5xl md:text-8xl mb-8 tracking-tight">
-             Have an idea? <br/>
-             <span className="text-brand-accent">Let's build it.</span>
-           </h2>
-           <button 
-             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-             className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white text-black rounded-full text-lg font-bold hover:bg-brand-accent transition-colors duration-300"
-           >
-             Start a Project
-             <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
-               <ArrowUp className="w-4 h-4" />
-             </div>
-           </button>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mb-24 flex flex-col items-center justify-center text-center">
+          <h2 className="mb-8 font-display text-5xl font-bold tracking-tight md:text-7xl lg:text-8xl">
+            Have an idea?
+            <br />
+            <span className="text-brand-accent">Let&apos;s build it.</span>
+          </h2>
+          <button
+            onClick={() =>
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+            }
+            className="group inline-flex items-center gap-4 rounded-full bg-white px-8 py-4 text-lg font-bold text-black transition-colors duration-300 hover:bg-brand-accent"
+          >
+            Start a Project
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-transform duration-300 group-hover:rotate-45">
+              <ArrowUp className="h-4 w-4" />
+            </div>
+          </button>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-12 mb-20 border-t border-white/10 pt-16">
-          <div className="col-span-1 md:col-span-1">
-            <a href="#" className="flex items-center gap-2 mb-6 group">
-              <div className="w-8 h-8 bg-brand-accent rounded-lg flex items-center justify-center text-dark-900 font-bold group-hover:rotate-12 transition-transform">V</div>
-              <span className="font-display font-bold text-xl text-white">Vortex<span className="text-brand-accent">.</span></span>
+        <div className="mb-20 grid gap-12 border-t border-white/10 pt-16 md:grid-cols-4">
+          <div>
+            <a href="#" className="mb-6 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-accent font-bold text-dark-900">
+                V
+              </div>
+              <span className="font-display text-xl font-bold text-white">
+                Vortex<span className="text-brand-accent">.</span>
+              </span>
             </a>
-            <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="max-w-xs text-sm leading-relaxed text-gray-500">
               Refining digital presence for brands that dare to lead.
             </p>
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-6 font-display">Navigation</h4>
+            <h4 className="mb-6 font-display font-bold text-white">Navigation</h4>
             <ul className="space-y-3">
-              {['Home', 'About', 'Services', 'Work', 'Contact'].map((item) => (
+              {['Home', 'About', 'Services', 'Work', 'Contact'].map(item => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-gray-500 text-sm hover:text-brand-accent transition-colors">{item}</a>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className="text-sm text-gray-500 transition-colors hover:text-brand-accent"
+                  >
+                    {item}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-6 font-display">Services</h4>
+            <h4 className="mb-6 font-display font-bold text-white">Services</h4>
             <ul className="space-y-3">
-              {['Web Design', 'Development', 'SEO', 'Branding', 'Marketing'].map((item) => (
+              {['Web Design', 'Development', 'SEO', 'Branding', 'Marketing'].map(item => (
                 <li key={item}>
-                  <a href="#" className="text-gray-500 text-sm hover:text-brand-accent transition-colors">{item}</a>
+                  <a
+                    href="#"
+                    className="text-sm text-gray-500 transition-colors hover:text-brand-accent"
+                  >
+                    {item}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-             <h4 className="text-white font-bold mb-6 font-display">Socials</h4>
-             <div className="flex gap-4">
+            <h4 className="mb-6 font-display font-bold text-white">Socials</h4>
+            <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:bg-brand-accent hover:text-black hover:border-brand-accent transition-all duration-300">
-                  <Icon className="w-4 h-4" />
+                <a
+                  key={i}
+                  href="#"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-400 transition-all duration-300 hover:border-brand-accent hover:bg-brand-accent hover:text-black"
+                >
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs">© 2024 Vortex Agency. All rights reserved.</p>
-          
-          <button 
-            onClick={scrollToTop} 
-            className="flex items-center gap-2 text-white/50 text-xs font-bold uppercase hover:text-brand-accent transition-colors"
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
+          <p className="text-xs text-gray-600">
+            © 2024 Vortex Agency. All rights reserved.
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-2 text-xs font-bold uppercase text-white/50 transition-colors hover:text-brand-accent"
           >
-            Back to Top <ArrowUp className="w-3 h-3" />
+            Back to Top <ArrowUp className="h-3 w-3" />
           </button>
         </div>
       </div>
