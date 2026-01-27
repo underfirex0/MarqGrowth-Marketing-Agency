@@ -3,7 +3,7 @@ import Button from './Button';
 import RevealOnScroll from './RevealOnScroll';
 import { ArrowRight, TrendingUp, Zap, Globe, Activity, ChevronDown } from 'lucide-react';
 
-// Floating Card Component
+/* Floating Card */
 const FloatingCard: React.FC<{
   className?: string;
   icon: React.ElementType;
@@ -20,11 +20,11 @@ const FloatingCard: React.FC<{
   color = 'text-brand-accent',
 }) => (
   <div
-    className={`hidden lg:flex absolute p-4 rounded-2xl bg-dark-900/40 backdrop-blur-md border border-white/10 items-center gap-4 shadow-[0_0_30px_rgba(0,0,0,0.5)] animate-float-slow z-20 hover:border-brand-accent/30 hover:bg-dark-900/60 transition-all duration-500 group pointer-events-auto cursor-default ${className}`}
+    className={`hidden lg:flex absolute p-4 rounded-2xl bg-dark-900/40 backdrop-blur-md border border-white/10 items-center gap-4 shadow-[0_0_30px_rgba(0,0,0,0.5)] animate-float-slow z-20 transition-all duration-500 ${className}`}
     style={{ animationDelay: `${delay}s` }}
   >
     <div
-      className={`w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center ${color} group-hover:scale-110 transition-transform duration-500`}
+      className={`w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center ${color}`}
     >
       <Icon size={24} />
     </div>
@@ -43,40 +43,30 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-24"
     >
-      {/* Base */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 bg-dark-950" />
+      <div className="absolute inset-0 bg-noise opacity-[0.03]" />
 
-      {/* Grid */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute bottom-[-10%] left-[-50%] right-[-50%] h-[100vh] bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4rem_4rem] [transform:perspective(1000px)_rotateX(60deg)] opacity-20 animate-pulse-slow origin-bottom" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-dark-950/80" />
-      </div>
-
-      {/* Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/10 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen pointer-events-none" />
-
-      {/* Noise */}
-      <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
-
-      {/* CONTENT */}
+      {/* CONTENT WRAPPER */}
       <div className="relative z-30 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* FLOATING CARDS */}
+
+        {/* FLOATING CARDS – HARD OFFSET */}
         <div className="absolute inset-0 pointer-events-none">
 
-          {/* LEFT TOP */}
+          {/* LEFT – TOP */}
           <FloatingCard
-            className="top-[8%] left-[2%]"
+            className="top-[12%] left-[-18%]"
             icon={TrendingUp}
             label="Client Growth"
             value="+245% Avg."
             delay={0}
           />
 
-          {/* LEFT MID */}
+          {/* LEFT – BOTTOM */}
           <FloatingCard
-            className="top-[55%] left-[1%] opacity-60 scale-90 blur-[1px]"
+            className="top-[62%] left-[-22%] scale-90 opacity-70"
             icon={Activity}
             label="Strategy"
             value="Data-Driven"
@@ -84,34 +74,35 @@ const Hero: React.FC = () => {
             color="text-blue-400"
           />
 
-          {/* RIGHT TOP */}
+          {/* RIGHT – TOP */}
           <FloatingCard
-            className="top-[18%] right-[2%] opacity-80 scale-95"
+            className="top-[18%] right-[-18%] scale-95"
             icon={Globe}
             label="Reach"
             value="Global Scale"
-            delay={3}
+            delay={2}
             color="text-purple-400"
           />
 
-          {/* RIGHT BOTTOM */}
+          {/* RIGHT – BOTTOM */}
           <FloatingCard
-            className="bottom-[10%] right-[2%]"
+            className="top-[68%] right-[-20%]"
             icon={Zap}
             label="Deployment"
             value="48 Hours"
-            delay={2}
+            delay={3}
             color="text-yellow-400"
           />
         </div>
 
-        {/* CENTER CONTENT */}
+        {/* CENTER TEXT */}
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+
           <RevealOnScroll>
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent" />
+                <span className="animate-ping absolute h-full w-full rounded-full bg-brand-accent opacity-75" />
+                <span className="relative h-2 w-2 rounded-full bg-brand-accent" />
               </span>
               <span className="text-xs font-bold text-gray-300 tracking-[0.2em] uppercase">
                 The New Standard of Growth
@@ -148,10 +139,11 @@ const Hero: React.FC = () => {
               </Button>
             </div>
           </RevealOnScroll>
+
         </div>
       </div>
 
-      {/* Scroll */}
+      {/* SCROLL */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <ChevronDown className="w-4 h-4 text-brand-accent opacity-50" />
       </div>
