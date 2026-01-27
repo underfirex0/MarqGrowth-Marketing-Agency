@@ -3,167 +3,156 @@ import Button from './Button';
 import RevealOnScroll from './RevealOnScroll';
 import { ArrowRight, TrendingUp, Zap, Globe, Activity, ChevronDown } from 'lucide-react';
 
-// Floating Card Component
-const FloatingCard: React.FC<{ 
-    className?: string; 
-    icon: React.ElementType; 
-    label: string; 
-    value: string; 
-    delay?: number;
-    color?: string;
+const FloatingCard: React.FC<{
+  className?: string;
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  delay?: number;
+  color?: string;
 }> = ({ className = '', icon: Icon, label, value, delay = 0, color = 'text-brand-accent' }) => (
-  <div 
-    className={`hidden lg:flex absolute p-4 rounded-2xl bg-dark-900/40 backdrop-blur-md border border-white/10 items-center gap-4 shadow-[0_0_30px_rgba(0,0,0,0.5)] animate-float-slow z-20 hover:border-brand-accent/30 hover:bg-dark-900/60 transition-all duration-500 group pointer-events-auto cursor-default ${className}`} 
+  <div
+    className={`pointer-events-auto absolute z-20 hidden cursor-default items-center gap-4 rounded-2xl border border-white/10 bg-dark-900/50 p-4 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-brand-accent/30 hover:bg-dark-900/70 lg:flex ${className}`}
     style={{ animationDelay: `${delay}s` }}
   >
-     <div className={`w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center ${color} group-hover:scale-110 transition-transform duration-500`}>
-        <Icon size={24} />
-     </div>
-     <div>
-        <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">{label}</div>
-        <div className="text-white font-display font-bold text-lg leading-none">{value}</div>
-     </div>
+    <div
+      className={`flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 ${color}`}
+    >
+      <Icon size={22} />
+    </div>
+    <div>
+      <div className="mb-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+        {label}
+      </div>
+      <div className="font-display text-lg font-bold leading-none text-white">
+        {value}
+      </div>
+    </div>
   </div>
 );
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
-      {/* ---------------- BACKGROUND LAYERS ---------------- */}
-      
-      {/* 1. Deep Base */}
-      <div className="absolute inset-0 bg-dark-950"></div>
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pb-20 pt-24"
+    >
+      <div className="absolute inset-0 bg-dark-950" />
 
-      {/* 2. Moving Cyber Grid (Perspective Floor) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute bottom-[-10%] left-[-50%] right-[-50%] h-[100vh] bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4rem_4rem] [transform:perspective(1000px)_rotateX(60deg)] opacity-20 animate-pulse-slow origin-bottom"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-dark-950/80"></div>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute bottom-[-10%] left-[-50%] right-[-50%] h-[100vh] bg-[linear-gradient(to_right,#222_1px,transparent_1px),linear-gradient(to_bottom,#222_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 [transform:perspective(1000px)_rotateX(60deg)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-dark-950/80" />
       </div>
 
-      {/* 3. Central Glow/Vortex */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/10 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen pointer-events-none"></div>
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent/10 blur-[100px] mix-blend-screen" />
+      <div className="pointer-events-none absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay" />
 
-      {/* 4. Noise Texture */}
-      <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
-
-
-      {/* ---------------- CONTENT LAYER ---------------- */}
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-30">
-        
-        {/* Floating Widgets (Desktop Decoration) */}
-        <div className="absolute inset-0 pointer-events-none">
-           {/* Top Left - ROI */}
-           <FloatingCard 
-              className="top-[10%] left-[0%]"
-              icon={TrendingUp}
-              label="Client Growth"
-              value="+245% Avg."
-              delay={0}
-           />
-           {/* Bottom Right - Speed */}
-           <FloatingCard 
-              className="bottom-[15%] right-[2%]"
-              icon={Zap}
-              label="Deployment"
-              value="48 Hours"
-              delay={2}
-              color="text-yellow-400"
-           />
-           {/* Middle Left - Strategy */}
-           <FloatingCard 
-              className="top-[45%] left-[-5%] opacity-60 scale-90 blur-[1px]"
-              icon={Activity}
-              label="Strategy"
-              value="Data-Driven"
-              delay={1}
-              color="text-blue-400"
-           />
-             {/* Middle Right - Global */}
-           <FloatingCard 
-              className="top-[25%] right-[0%] opacity-80 scale-95"
-              icon={Globe}
-              label="Reach"
-              value="Global Scale"
-              delay={3}
-              color="text-purple-400"
-           />
+      <div className="relative z-30 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="pointer-events-none absolute inset-0">
+          <FloatingCard
+            className="left-0 top-[12%]"
+            icon={TrendingUp}
+            label="Client Growth"
+            value="+245% Avg."
+          />
+          <FloatingCard
+            className="bottom-[18%] right-[2%]"
+            icon={Zap}
+            label="Deployment"
+            value="48 Hours"
+            delay={2}
+            color="text-yellow-400"
+          />
+          <FloatingCard
+            className="left-[-5%] top-[45%] scale-90 opacity-60"
+            icon={Activity}
+            label="Strategy"
+            value="Data-Driven"
+            delay={1}
+            color="text-blue-400"
+          />
+          <FloatingCard
+            className="right-0 top-[25%]"
+            icon={Globe}
+            label="Reach"
+            value="Global Scale"
+            delay={3}
+            color="text-purple-400"
+          />
         </div>
 
-        {/* Center Content */}
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto mt-10 md:mt-0">
-           
-           {/* Badge */}
-           <RevealOnScroll>
-              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:border-brand-accent/30 transition-all duration-300 group cursor-default">
-                 <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
-                 </span>
-                 <span className="text-xs font-bold text-gray-300 tracking-[0.2em] uppercase group-hover:text-white transition-colors">
-                   The New Standard of Growth
-                 </span>
-              </div>
-           </RevealOnScroll>
+        <div className="mx-auto mt-10 flex max-w-5xl flex-col items-center text-center md:mt-0">
+          <RevealOnScroll>
+            <div className="mb-8 inline-flex cursor-default items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-accent opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-accent" />
+              </span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-300">
+                The New Standard of Growth
+              </span>
+            </div>
+          </RevealOnScroll>
 
-           {/* Massive Headline */}
-           <RevealOnScroll delay={100}>
-             <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-white mb-8 tracking-tighter relative select-none">
-                <span className="block hover:scale-105 transition-transform duration-700 origin-bottom text-shadow-sm">WE BUILD</span>
-                
-                {/* Outlined / Glass Text with slight fill for readability */}
-                <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.5)] hover:[-webkit-text-stroke:1px_rgba(204,255,0,0.8)] hover:text-white/5 transition-all duration-500">
-                  LEGACIES
-                </span>
-                
-                {/* Accent Text with Glow */}
-                <span className="block text-brand-accent drop-shadow-[0_0_25px_rgba(163,230,53,0.4)]">
-                  THAT WIN.
-                </span>
-             </h1>
-           </RevealOnScroll>
+          <RevealOnScroll delay={100}>
+            <h1 className="mb-8 select-none font-display text-6xl font-bold leading-[0.9] tracking-tighter text-white md:text-8xl lg:text-9xl">
+              <span className="block">WE BUILD</span>
+              <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.5)]">
+                LEGACIES
+              </span>
+              <span className="block text-brand-accent drop-shadow-[0_0_25px_rgba(163,230,53,0.4)]">
+                THAT WIN.
+              </span>
+            </h1>
+          </RevealOnScroll>
 
-           {/* Subheadline */}
-           <RevealOnScroll delay={200}>
-              <p className="text-lg md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-                 We are the <span className="text-white font-medium">anti-agency</span>. No fluff. No vanity metrics. 
-                 Just engineered <span className="text-white font-medium border-b border-brand-accent/50 pb-0.5">dominance</span> for brands ready to scale.
-              </p>
-           </RevealOnScroll>
+          <RevealOnScroll delay={200}>
+            <p className="mb-12 max-w-2xl text-lg font-light leading-relaxed text-gray-400 md:text-2xl">
+              We are the <span className="font-medium text-white">anti-agency</span>. No
+              fluff. No vanity metrics. Just engineered{' '}
+              <span className="border-b border-brand-accent/50 font-medium text-white">
+                dominance
+              </span>{' '}
+              for brands ready to scale.
+            </p>
+          </RevealOnScroll>
 
-           {/* CTA Buttons */}
-           <RevealOnScroll delay={300} className="w-full">
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Button 
-                  variant="primary" 
-                  className="h-16 px-12 text-lg w-full sm:w-auto shadow-[0_0_30px_rgba(163,230,53,0.3)] hover:shadow-[0_0_50px_rgba(163,230,53,0.6)] hover:-translate-y-1 transition-all duration-300"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Start Your Evolution
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="h-16 px-12 text-lg w-full sm:w-auto backdrop-blur-md bg-white/5 border-white/10 hover:bg-white/10 hover:border-brand-accent/50 hover:-translate-y-1 transition-all duration-300 group"
-                  onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Explore Case Studies <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-           </RevealOnScroll>
-
+          <RevealOnScroll delay={300} className="w-full">
+            <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+              <Button
+                variant="primary"
+                className="h-16 w-full px-12 text-lg sm:w-auto"
+                onClick={() =>
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                }
+              >
+                Start Your Evolution
+              </Button>
+              <Button
+                variant="outline"
+                className="h-16 w-full px-12 text-lg sm:w-auto"
+                onClick={() =>
+                  document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
+                }
+              >
+                Explore Case Studies
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </RevealOnScroll>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 animate-bounce">
-         <div className="flex flex-col items-center gap-2 opacity-50">
-            <span className="text-[10px] uppercase tracking-widest text-gray-500">Scroll</span>
-            <ChevronDown className="w-4 h-4 text-brand-accent" />
-         </div>
+      <div className="absolute bottom-8 left-1/2 z-30 -translate-x-1/2">
+        <div className="flex animate-bounce flex-col items-center gap-2 opacity-50">
+          <span className="text-[10px] uppercase tracking-widest text-gray-500">
+            Scroll
+          </span>
+          <ChevronDown className="h-4 w-4 text-brand-accent" />
+        </div>
       </div>
 
-      {/* Bottom Fade - Smooth Transition to next section */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent pointer-events-none z-20"></div>
+      <div className="pointer-events-none absolute bottom-0 left-0 z-20 h-32 w-full bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent" />
     </section>
   );
 };
