@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20"
     >
-      {/* Background */}
+      {/* Base */}
       <div className="absolute inset-0 bg-dark-950" />
 
       {/* Grid */}
@@ -62,12 +62,12 @@ const Hero: React.FC = () => {
 
       {/* CONTENT */}
       <div className="relative z-30 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Floating Widgets */}
+        {/* FLOATING CARDS */}
         <div className="absolute inset-0 pointer-events-none">
 
-          {/* TOP LEFT */}
+          {/* LEFT TOP */}
           <FloatingCard
-            className="top-[12%] left-[6%]"
+            className="top-[8%] left-[2%]"
             icon={TrendingUp}
             label="Client Growth"
             value="+245% Avg."
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
 
           {/* LEFT MID */}
           <FloatingCard
-            className="top-[48%] left-[4%] opacity-60 scale-90 blur-[1px]"
+            className="top-[55%] left-[1%] opacity-60 scale-90 blur-[1px]"
             icon={Activity}
             label="Strategy"
             value="Data-Driven"
@@ -84,9 +84,9 @@ const Hero: React.FC = () => {
             color="text-blue-400"
           />
 
-          {/* TOP RIGHT */}
+          {/* RIGHT TOP */}
           <FloatingCard
-            className="top-[22%] right-[6%] opacity-80 scale-95"
+            className="top-[18%] right-[2%] opacity-80 scale-95"
             icon={Globe}
             label="Reach"
             value="Global Scale"
@@ -94,9 +94,9 @@ const Hero: React.FC = () => {
             color="text-purple-400"
           />
 
-          {/* BOTTOM RIGHT */}
+          {/* RIGHT BOTTOM */}
           <FloatingCard
-            className="bottom-[18%] right-[5%]"
+            className="bottom-[10%] right-[2%]"
             icon={Zap}
             label="Deployment"
             value="48 Hours"
@@ -106,57 +106,45 @@ const Hero: React.FC = () => {
         </div>
 
         {/* CENTER CONTENT */}
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto mt-10 md:mt-0">
-
-          {/* Badge */}
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           <RevealOnScroll>
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:border-brand-accent/30 transition-all duration-300 group cursor-default">
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent" />
               </span>
-              <span className="text-xs font-bold text-gray-300 tracking-[0.2em] uppercase group-hover:text-white transition-colors">
+              <span className="text-xs font-bold text-gray-300 tracking-[0.2em] uppercase">
                 The New Standard of Growth
               </span>
             </div>
           </RevealOnScroll>
 
-          {/* Headline */}
           <RevealOnScroll delay={100}>
-            <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-white mb-8 tracking-tighter select-none">
-              <span className="block hover:scale-105 transition-transform duration-700 origin-bottom">
-                WE BUILD
-              </span>
-              <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.5)] hover:[-webkit-text-stroke:1px_rgba(204,255,0,0.8)] hover:text-white/5 transition-all duration-500">
+            <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-white mb-8 tracking-tighter">
+              <span className="block">WE BUILD</span>
+              <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.5)]">
                 LEGACIES
               </span>
-              <span className="block text-brand-accent drop-shadow-[0_0_25px_rgba(163,230,53,0.4)]">
+              <span className="block text-brand-accent">
                 THAT WIN.
               </span>
             </h1>
           </RevealOnScroll>
 
-          {/* Sub */}
           <RevealOnScroll delay={200}>
-            <p className="text-lg md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-              We are the <span className="text-white font-medium">anti-agency</span>. No fluff.
-              No vanity metrics. Just engineered{' '}
-              <span className="text-white font-medium border-b border-brand-accent/50 pb-0.5">
-                dominance
-              </span>{' '}
-              for brands ready to scale.
+            <p className="text-lg md:text-2xl text-gray-400 mb-12 max-w-2xl">
+              We are the <span className="text-white">anti-agency</span>. No fluff.
+              Just engineered <span className="border-b border-brand-accent">dominance</span>.
             </p>
           </RevealOnScroll>
 
-          {/* CTA */}
-          <RevealOnScroll delay={300} className="w-full">
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <RevealOnScroll delay={300}>
+            <div className="flex flex-col sm:flex-row gap-6">
               <Button variant="primary" className="h-16 px-12 text-lg">
                 Start Your Evolution
               </Button>
-              <Button variant="outline" className="h-16 px-12 text-lg group">
-                Explore Case Studies
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Button variant="outline" className="h-16 px-12 text-lg">
+                Explore Case Studies <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
           </RevealOnScroll>
@@ -164,17 +152,9 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 animate-bounce">
-        <div className="flex flex-col items-center gap-2 opacity-50">
-          <span className="text-[10px] uppercase tracking-widest text-gray-500">
-            Scroll
-          </span>
-          <ChevronDown className="w-4 h-4 text-brand-accent" />
-        </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <ChevronDown className="w-4 h-4 text-brand-accent opacity-50" />
       </div>
-
-      {/* Fade */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent pointer-events-none z-20" />
     </section>
   );
 };
