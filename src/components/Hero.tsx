@@ -29,7 +29,7 @@ const FloatingCard: React.FC<{
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
-      
+
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-dark-950"></div>
 
@@ -45,50 +45,15 @@ const Hero: React.FC = () => {
       {/* CONTENT */}
       <div className="container mx-auto px-6 relative z-30">
 
-        {/* FLOATING CARDS (MARGIN FIXED) */}
+        {/* FLOATING CARDS */}
         <div className="absolute inset-0 pointer-events-none">
-
-          {/* Top Left */}
-          <FloatingCard 
-            className="top-[12%] left-[6%]"
-            icon={TrendingUp}
-            label="Client Growth"
-            value="+245% Avg."
-            delay={0}
-          />
-
-          {/* Middle Left */}
-          <FloatingCard 
-            className="top-[48%] left-[4%] opacity-60 scale-90 blur-[1px]"
-            icon={Activity}
-            label="Strategy"
-            value="Data-Driven"
-            delay={1}
-            color="text-blue-400"
-          />
-
-          {/* Top Right */}
-          <FloatingCard 
-            className="top-[22%] right-[6%] opacity-80 scale-95"
-            icon={Globe}
-            label="Reach"
-            value="Global Scale"
-            delay={3}
-            color="text-purple-400"
-          />
-
-          {/* Bottom Right */}
-          <FloatingCard 
-            className="bottom-[18%] right-[5%]"
-            icon={Zap}
-            label="Deployment"
-            value="48 Hours"
-            delay={2}
-            color="text-yellow-400"
-          />
+          <FloatingCard className="top-[12%] left-[6%]" icon={TrendingUp} label="Client Growth" value="+245% Avg." />
+          <FloatingCard className="top-[48%] left-[4%] opacity-60 scale-90 blur-[1px]" icon={Activity} label="Strategy" value="Data-Driven" delay={1} color="text-blue-400" />
+          <FloatingCard className="top-[22%] right-[6%] opacity-80 scale-95" icon={Globe} label="Reach" value="Global Scale" delay={3} color="text-purple-400" />
+          <FloatingCard className="bottom-[18%] right-[5%]" icon={Zap} label="Deployment" value="48 Hours" delay={2} color="text-yellow-400" />
         </div>
 
-        {/* CENTER CONTENT */}
+        {/* CENTER */}
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto mt-10 md:mt-0">
 
           <RevealOnScroll>
@@ -105,29 +70,44 @@ const Hero: React.FC = () => {
 
           <RevealOnScroll delay={100}>
             <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-white mb-8 tracking-tighter select-none">
-              <span className="block hover:scale-105 transition-transform duration-700 origin-bottom">WE BUILD</span>
-              <span className="block text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.5)]">
+
+              <span className="block hover:scale-105 transition-transform duration-700 origin-bottom">
+                WE BUILD
+              </span>
+
+              {/* ✅ LEGACIES — HOVER ANIMATION RESTORED */}
+              <span className="
+                block
+                text-transparent
+                [-webkit-text-stroke:1px_rgba(255,255,255,0.5)]
+                hover:[-webkit-text-stroke:1px_rgba(204,255,0,0.8)]
+                hover:text-white/5
+                transition-all
+                duration-500
+              ">
                 LEGACIES
               </span>
+
               <span className="block text-brand-accent drop-shadow-[0_0_25px_rgba(163,230,53,0.4)]">
                 THAT WIN.
               </span>
+
             </h1>
           </RevealOnScroll>
 
           <RevealOnScroll delay={200}>
             <p className="text-lg md:text-2xl text-gray-400 mb-12 max-w-2xl leading-relaxed font-light">
               We are the <span className="text-white font-medium">anti-agency</span>. No fluff. No vanity metrics. 
-              Just engineered <span className="text-white font-medium border-b border-brand-accent/50">dominance</span> for brands ready to scale.
+              Just engineered <span className="text-white font-medium border-b border-brand-accent/50">dominance</span>.
             </p>
           </RevealOnScroll>
 
-          <RevealOnScroll delay={300} className="w-full">
+          <RevealOnScroll delay={300}>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Button variant="primary" className="h-16 px-12 text-lg w-full sm:w-auto">
+              <Button variant="primary" className="h-16 px-12 text-lg">
                 Start Your Evolution
               </Button>
-              <Button variant="outline" className="h-16 px-12 text-lg w-full sm:w-auto">
+              <Button variant="outline" className="h-16 px-12 text-lg">
                 Explore Case Studies <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
@@ -135,12 +115,8 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* SCROLL */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 animate-bounce">
-        <div className="flex flex-col items-center gap-2 opacity-50">
-          <span className="text-[10px] uppercase tracking-widest text-gray-500">Scroll</span>
-          <ChevronDown className="w-4 h-4 text-brand-accent" />
-        </div>
+        <ChevronDown className="w-4 h-4 text-brand-accent opacity-50" />
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent pointer-events-none z-20"></div>
